@@ -3,3 +3,4 @@
 /create_sdf
 **/*.csv
 **/.~*
+**/*.txt
