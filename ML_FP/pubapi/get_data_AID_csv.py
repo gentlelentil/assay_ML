@@ -65,7 +65,7 @@ def get_assay_info(request, AID, listkey=None, assay_size=None):
                 if ID == 0:
                     #header line
                     # header = [i[0], 'PUBCHEM_ASSAY_ID', i[1], i[2], i[3]]
-                    header = ['PUBCHEM_ASSAY_ID', i[1], i[2], i[3]]
+                    header = ['PUBCHEM_ASSAY_ID', i[1], i[2], i[3], i[4]]
                     cleanedlist.append(header)
                     continue
                 try: 
@@ -79,7 +79,7 @@ def get_assay_info(request, AID, listkey=None, assay_size=None):
                     #continue
 
                 # line = [int(i[0]), AID, int(i[1]), int(i[2]), i[3]]
-                line = [AID, int(i[1]), int(i[2]), i[3]]
+                line = [AID, int(i[1]), int(i[2]), i[3], int(i[4])]
                 cleanedlist.append(line)
                 CIDs.append(int(i[2]))
     
@@ -110,7 +110,7 @@ def get_assay_info(request, AID, listkey=None, assay_size=None):
                     if ID == 0 and count ==0:
                         #header line
                         #header = [i[0], 'PUBCHEM_ASSAY_ID', i[1], i[2], i[3]]
-                        header = ['PUBCHEM_ASSAY_ID', i[1], i[2], i[3]]
+                        header = ['PUBCHEM_ASSAY_ID', i[1], i[2], i[3], i[4]]
                         cleanedlist.append(header)
                         continue
                     try: 
@@ -124,7 +124,7 @@ def get_assay_info(request, AID, listkey=None, assay_size=None):
                         continue
 
                     #line = [int(i[0]), AID, int(i[1]), int(i[2]), i[3]]
-                    line = [AID, int(i[1]), int(i[2]), i[3]]
+                    line = [AID, int(i[1]), int(i[2]), i[3], int(i[4])]
                     cleanedlist.append(line)
                     CIDs.append(int(i[2]))
             pbar.update()
@@ -170,6 +170,9 @@ def get_data_AID_csv(assay):
 
     # print(request)
     return assay_data
+
+
+
 
 # if __name__ == '__main__':
 #     print("Should be called from main")
