@@ -54,4 +54,6 @@ def query_db(query):
     
     info = cur.fetchall()
     
+    conn.close()
+
     return info
