@@ -8,9 +8,9 @@ from tensorflow.keras.utils import Sequence
 ada_x_mmap = np.load('./adasyn/x_ecfpada.npy', mmap_mode='r')
 ada_y_mmap = np.load('./adasyn/y_ecfpada.npy', mmap_mode='r')
 
-batch_size = 2000
-dim = ada_x_mmap.shape
-classes = 2
+# batch_size = 30000
+# dim = ada_x_mmap.shape
+# classes = 2
 
 class data_generator(Sequence):
 
@@ -19,7 +19,7 @@ class data_generator(Sequence):
     
     def __init__(self, x_set, y_set, dim, batch_size, n_channels=1,
                  n_classes=2, shuffle=True):
-        'Initialization'
+        'Initialisation'
         self.dim = dim
         self.batch_size = batch_size
         self.x_data = x_set
@@ -54,8 +54,12 @@ class data_generator(Sequence):
     def __generate_data(self, tmp_list_IDs):
         'generates the data in batch size samples'
 
-        X = np.empty((self.batch_size, *self.dim, self.n_channels))
+        X = np.empty((self.batch_size, self.dim, self.n_channels))
         Y = np.empty((self.batch_size), dtype=int)
+
+        print(self.x_data[0].shape)
+        print(X[0].shape)
+        print(X.shape)
 
         for ID, i in enumerate(tmp_list_IDs):
             X[ID,] = self.x_data[i]
@@ -64,7 +68,4 @@ class data_generator(Sequence):
 
         return X, Y
 
-print(dim)
-
-generator = data_generator(ada_x_mmap, ada_y_mmap, dim, batch_size, n_classes=classes)
-
+# generator = data_generator(ada_x_mmap, ada_y_mmap, dim, batch_size, n_classes=classes)
