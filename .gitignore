@@ -5,4 +5,8 @@
 **/.~*
 **/*.txt
 **/datasets
-**/1511_data
+**/adasyn
+**/models
+**/*.png
+**/.ipynb*
+**/1511_data/
